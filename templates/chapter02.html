@@ -21,36 +21,47 @@
     <img width="65" src="images/chapter_top.png">
   </div>
   <div class="chapter_description_right">
-    Let's install Perl on Mac.
+    MacへPerlをインストールしてみましょう。
   </div>
 </div>
 
-<h2>Installation of Perl on Mac</h2>
+<h2>macOSへのPerlのインストール</h2>
 
-Perl is already installed on Mac. 
+macOSの環境には、すでにPerlがインストールされています。
 
-Execute the "Terminal" application and input the following command to check the version of Perl.
+以下のコマンドでPerlがインストールされているか確認してみましょう。
 
 <pre>
 perl -v
 </pre>
 
-You can see the version of Perl.
+バージョン情報が表示されれば、OKです。
 
-<pre>
-This is perl 5, version 28, subversion 2 (v5.28.2) built for darwin-thread-multi-2level
-(with 2 registered patches, see perl -V for more detail)
-</pre>
+さっそく、Perlを使い始めてみましょう。
 
-<h3>Installation of Perl on your home directory</h3>
+<h4>ユーザー環境へのPerlのインストール</h4>
 
-If you want to install the specific version of Perl on your home directory, you can use <b>perlbrew</b> or <b>plenv</b> according to your taste.
+最新のPerlなどを使いたい場合は、ユーザー環境にPerlをインストールすることもできます。
+
+またCPANモジュールをインストールしたい場合は、ユーザー環境へPerlをインストールするのが推奨です。
+
+新しいMac OS X(mojave)のシステムPerlは、セキュリティ上の理由で、C言語で書かれたPerlモジュールのインストールに失敗するからです。
+
+自分のユーザー環境にPerlをインストールしたい場合はperlbrewあるいはplenvというツールを使うことができます。
+
+ルート権限が必要ないので、インストールが簡単で、OSの環境を汚しません。最新のPerlをインストールして使うことができます。
+
+本番環境のWebサービスでPerlを実行する場合は、この方法が2019年現在は主流となっています。
+
+perlbrewとplenvはどちらも、似ているツールで、ユーザー環境にPerlをインストールするためのツールです。お好みで選択してください。
+
+<a href="https://syncer.jp/mac-terminal">macOSでターミナルを立ち上げ</a>てから、以下の手順を実行してください。
 
 <ul>
   <li>
-    <a href="/blog/20110220130464.html">perlbrew - Install Perl on your home directory</a>
+    <a href="/blog/20110220130464.html">perlbrew - ユーザー環境にPerlをインストールする</a>
   </li>
   <li>
-    <a href="/blog/20180816153437.html">plenv - Install Perl on your home directory</a>
+    <a href="/blog/20180816153437.html">plenv - ユーザー環境にPerlをインストールする</a>
   </li>
 </ul>

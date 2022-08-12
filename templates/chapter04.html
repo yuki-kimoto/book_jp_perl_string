@@ -21,132 +21,191 @@
     <img width="65" src="images/chapter_top.png">
   </div>
   <div class="chapter_description_right">
-    Let's run Perl using Windows Command Prompt.
+    Windowsでコマンドプロンプトを使ってPerlを実行してみましょう。
   </div>
 </div>
 
-<h2>Windows Command Prompt Tutorial</h2>
+<h2>Perlを実行するためのコマンドプロンプト入門</h2>
 
-Explains how to use Windows Command Prompt to run Perl. Command Prompt is a <a href="https://en.wikipedia.org/wiki/Command-line_interface">CLI</a> tool to run programs on Windows.
+Perlのプログラミングは、コマンドと呼ばれるテキストを入力して実行します。まず最初にWindowsにおけるコマンド実行ツールであるコマンドプロンプトについて解説したいと思います。解説はWindows 10であることを前提にします。Windows 7, 8でも、ほとんど同じ手順で実行できますが、アプリケーションを探す場所など、一部異なる場合があります。
 
-<h3>Execution of Command Prompt</h3>
+<h4>コマンドプロンプトとは</h4>
 
-Let's execute Command Prompt.
+コマンドプロンプトとは、Windows環境におけるCUIを用いたプログラムの実行環境です。CUIとは、Character-based User Interfaceの略で、テキストを入力して、プログラムを実行するインターフェースのことです。Windows上で、Perlプログラミングをするときは、コマンドプロンプトを用いて、Perlを実行することになります。
 
-"Start Menu" | "Apps" | "Windows System Tools" | "Command Prompt"
+<h4>コマンドプロンプトを実行するには</h4>
 
-<img src="images/commandprompt/commandprompt.png">
+画面左下のWindowsメニューからアプリの一覧で「Windowsシステムツール」→「コマンドプロンプト」で実行できます。コマンドプロンプトのアイコンを右クリックでドラッグして、デスクトップに、ショートカットを作っておくと便利です。
 
-Your home directory is shown on Command Prompt.
+コマンドプロンプトを実行すると、以下のようにコマンドプロンプトが立ち上がります。
+
+<img src="/images/commandprompt/commandprompt.png">
+
+コマンドプロンプトのホームディレクトリは、ユーザーディレクトリです。
+
+この例では以下です。
 
 <pre>
 C:\Users\kimot
 </pre>
 
-<h3>Showing File Extensions</h3>
+<h4>拡張子を表示する</h4>
 
-The extension of Perl program is "<b>.pl</b>". It is useful if extensions of files are displayed.
+Perlのプログラムは単なるテキストファイルですが、拡張子が「.pl」なので、拡張子を表示するように設定しておきましょう。拡張子とはプログラムの種類を表すためのものです。
 
-The way to show file extensions is described in the following page.
+画面左下のWindowsメニューを右クリック → 「エクスプローラー」をクリック → 上のタブの「表示」をクリック → 「ファイル名拡張子」にチェックを入れる。
 
-<a href="https://www.howtogeek.com/205086/beginner-how-to-make-windows-show-file-extensions/">How to Make Windows Show File Extensions</a>
+<h4>Perlプログラムを作成する</h4>
 
-<h3>Execution of Notepad</h3>
+コマンドプロンプトのホームディレクトリをエクスプローラーで開きましょう。
 
-Perl programs are text files. You can create your Perl programs using Notepad.
-
-The way to use Notepad is described in the following page.
-
-<a href="https://www.digitalcitizen.life/start-notepad-windows/">11 ways to start Notepad in Windows</a>
-
-<h3>Creating Perl Programs</h3>
-
-Let's create a Perl program.
-
-Create a file named "start.pl" at your home directory.
+この例では以下のディレクトリにアクセスします。
 
 <pre>
-C:\Users\kimot\start.pl
+C:\Users\kimot
 </pre>
 
-And write the following text.
+画面左下のWindowsメニューを右クリック → 「エクスプローラー」をクリック → 左メニュー「OS(C:)」をクリック → 「ユーザー」をクリック → 「kimot」をクリック。
+
+Usersに該当する部分は、日本語では「ユーザー」と表示されていることに注意してください。
+
+C:\Users\kimotのディレクトリの空いている部分を右クリック→「新規作成」→「テキスト文書」。名前を「start.pl」にして保存してください。「拡張子を変えると動かなくなる可能性があります」の注意ができますが、そのまま進めます。
+
+「.pl」の関連づけをメモ帳に変更します。使っているテキストエディタがある場合は、使っているテキストエディタに関連づけを変更してください。
+
+「start.pl」を右クリック →「プログラムから開く」→「別のプログラムを選択」→「メモ帳」→「常にこのアプリを使って.plファイルを開く」にチェック。
+
+「start.pl」をクリックして、メモ帳で開く。
+
+以下の内容を入力してください。
 
 <pre>
 print "Hello World";
 </pre>
 
-And save it.
+左上の「ファイル」→「上書き保存」で保存します。
 
-<h3>Runing Perl Programs</h3>
+<h4>Perlを実行する</h4>
 
-You can run your Perl program using <b>perl</b> command.
+Perlを実行するにはperlコマンドを使用します。コマンドプロンプトで以下の記述してEnterを入力してください。
 
 <pre>
 perl start.pl
 </pre>
 
-The output is:
+以下のように出力されれば、Perlプログラムを実行できています。おめでとうございます。
 
 <pre>
 Hello World
 </pre>
 
-<h3>Commands of Command Prompt</h3>
+<h4>最初に覚えておきたいコマンド</h4>
 
-Intorduce offten used commands of Command Prompt.
-
-<h4>dir</h4>
-
-The "dir" command displays the list of files.
+dirコマンドでファイルの一覧を表示できます。dirと入力して、Enterを押してください。
 
 <pre>
 dir
 </pre>
 
-<h4>cd</h4>
-
-The "cd" command changes the working directory.
+cdコマンドで、作業ディレクトリを変更できます。
 
 <pre>
-cd DirectoryName
+cd ディレクトリ名
 </pre>
 
-".." is the file name that means the folder one level higher.
+ひとつ上のディレクトリに移動するには、 cd .. とします。
 
 <pre>
 cd ..
 </pre>
 
-<h4>Changing Drives</h4>
+<h4>空白のある引数を渡す</h4>
 
-You can change drives using "c:" or "d:".
+<pre>
+perl start.pl "a i u"
+</pre>
+
+引数に空白が含まれている場合は、ダブルクオーテーションで囲みます。
+
+<h4>ドライブを変更する</h4>
 
 <pre>
 c:
 d:
 </pre>
 
-<h4>Seeing Command Histories</h4>
+c: で、C ドライブに、d: で、D ドライブにドライブを変更することができます。
 
-You can see command histories using "↑" and "↓" keys.
+<h4>コマンド履歴を参照する</h4>
 
 <pre>
 ↑
 ↓
 </pre>
 
-<h4>Getting Environment Variables</h4>
+上下キーでコマンド履歴をたどることができます。
 
-You can get and show a environment variable as the following.
-
-<pre>
-echo %PATH%
-</pre>
-
-<h4>Setting Environment Variable</h4>
-
-You can set a environment variable as the following.
+<h4>ファイル名を補完する</h4>
 
 <pre>
-SET DATE=20080604
+Ctrl + f
 </pre>
+
+ファイル名を途中まで入力して、Ctrl + f で、ファイル名を補完することができます。以下で記述するコマンドプロンプトの設定の変更が必要になります。
+
+<h4>環境変数を表示する</h4>
+
+<pre>
+echo %PATH% ( 環境変数PATHの内容をみる場合 )
+</pre>
+
+環境変数を見るには、echo %環境変数名%とします。
+
+<h4>環境変数を設定する</h4>
+
+<pre>
+SET DATE=20080604 ( 環境変数DATEに、20080604を設定する場合 )
+perl start.pl %DATE% ( 環境変数を引数として使用する例 )
+</pre>
+
+環境変数を、SET 環境変数名=値 で環境変数を設定できます。= の左右には、空白を入れてはいけません。環境変数を使用するには、 %環境変数名%  とします。
+
+環境変数を設定しても、OSの環境変数の値は変わりません。起動しているコマンドプロンプト内でだけ有効です。
+
+<h4>コマンドプロンプトの便利な設定</h4>
+
+<b>コマンドプロンプトの設定の変更方法</b>
+
+ショートカットをデスクトップに作ったら、右クリック「プロパティ」で、設定を変更できます。
+
+<b>作業フォルダの設定とファイル名補完の設定</b>
+
+「ショートカット」タブから作業フォルダの設定とファイル名補完の設定ができます。作業フォルダとは、ショートカットを起動したときの、カレントディレクトリのことです。
+
+ファイル名補完の設定をするには、「リンク先」とかかれた、コマンドプロンプトのパスの最後に、 :/f on と追加します。: の前には、空白が必要です。これで、 「 8. ファイル名を補完 」のコマンドが有効になります。
+
+例 %SystemRoot%\system32\cmd.exe :/f on
+
+<b>簡易編集モードの設定</b>
+
+「オプション」タブから、簡易編集モードの設定ができます。チェックを入れると、右クリックで、コピー＆ペーストができるようになります。
+
+<b>フォントサイズの設定</b>
+
+「フォント」タブから、フォントサイズを設定できます。少し小さめにしたほうが見やすいと思います。
+
+<b>画面バッファサイズの設定</b>
+
+「レイアウト」タブから、画面バッファサイズの設定ができます。「高さ」の項目を最大値にしておきます。
+
+画面バッファサイズ「高さ」を大きくしておくと、画面がスクロールしても、設定した行数分だけ、出力を保存しておくことができます。
+
+<h3>コマンドプロンプトをLinux風の環境にしたい</h3>
+
+Strawberry Perlとコマンドプロンプトで、もう少し<a href="https://linux.perlzemi.com/">Linux</a>風の環境を作りたいという場合は、以下の記事を参考にしてください。
+
+<ul>
+  <li>
+    <a href="/blog/20200117144713.html">Strawberry PerlとコマンドプロンプトでLinux風環境を作る方法</a>
+  </li>
+</ul>

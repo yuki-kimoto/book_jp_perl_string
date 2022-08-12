@@ -21,30 +21,30 @@
     <img width="65" src="images/chapter_top.png">
   </div>
   <div class="chapter_description_right">
-    Let's install Perl modules using cpanm.
+    cpanmを使ってPerlのモジュールをインストールしてみましょう。
   </div>
 </div>
 
-<h2>cpanm - Installation of Perl Modules on User Directories</h2>
+<h2>cpanm - CPANモジュールをユーザーディレクトリへインストール</h2>
 
-<a href="https://metacpan.org/dist/App-cpanminus/view/bin/cpanm">cpanm</a> is a command line tool to install <a href="/blog/20100504127089.html">CPAN</a> modules on user directories. 
+cpanmを使うとユーザーディレクトリに<a href="/blog/20100504127089.html">CPAN</a>モジュールをインストールすることができます。cpanmは、Perlのモジュールインストーラーとして、デフォルトで採用するディストリビューションも増えています。
 
 <pre>
-# Installation of CPAN modules
-cpanm MoudleName
+# CPANモジュールのインストール
+cpanm モジュール名
 </pre>
 
-<h3>Installation of cpanm</h3>
+<h3>cpanmのインストール</h3>
 
-Explains how to install cpanm.
+cpanmのインストール方法を解説します。
 
 <h4>Strawberry Perl</h4>
 
-<a href="/blog/20180808153368.html">Strawberry Perl</a> has cpanm by default. Strawberry Perl is one of Perl distributions on Windows.
+Windowsで利用できるPerlディストリビューションである<a href="/blog/20180808153368.html">Strawberry Perl</a>では、cpanmを標準で利用することができます。
 
 <h4>perlbrew</h4>
 
-If you install <a href="/blog/20110220130464.html">perlbrew</a>, you can install cpanm in the following command.
+<a href="/blog/20110220130464.html">perlbrew</a>でPerlをユーザーディレクトリにインストールした場合は、以下のコマンドでcpanmをインストールできます。
 
 <pre>
 perlbrew install-cpanm
@@ -52,86 +52,64 @@ perlbrew install-cpanm
 
 <h4>plenv</h4>
 
-If you install <a href="/blog/20180816153437.html">plenv</a>, you can install cpanm in the following command.
+<a href="/blog/20180816153437.html">plenv</a>でPerlをユーザーディレクトリにインストールした場合は、以下のコマンドでcpanmをインストールできます。
 
 <pre>
 plenv install-cpanm
 </pre>
 
-<h4>Download cpanm itself</h4>
+<h4>cpanm単体でダウンロード</h4>
 
-You can download cpanm itself.
+cpanmは、単体のコマンドとしてダウンロードすることも可能です。
 
 <pre>
+# cpanmのインストール
 curl -L -O http://xrl.us/cpanm > cpanm
 chmod 755 cpanm
 </pre>
 
-You can execute cpanm as the following.
+単体でダウンロードした場合は、以下のようにして実行します。
 
 <pre>
-./cpanm ModuleName
+# CPANモジュールのインストール
+./cpanm モジュール名
 </pre>
 
-<h4>Package Managers</h4>
+配布するアプリケーションに組み込む場合に便利です。
 
-Install cpanm using package managers.
+<h3>モジュールのインストール</h3>
 
-<b><a href="https://en.ubuntu.perlzemi.com/">Ubuntu</a>, <a href="https://en.wikipedia.org/wiki/Debian">Debian</a></b>
-
-<pre>
-apt install cpanminus
-</pre>
-
-<b><a href="https://en.wikipedia.org/wiki/Red_Hat_Linux">Red Hat Linux</a>, <a href="https://en.centos.perlzemi.com/">Cent OS</a></b>
+<a href="https://mojolicious.perlzemi.com/">Mojolicious</a>というモジュールをインストールしてみましょう。
 
 <pre>
-yum install perl-App-cpanminus
-</pre>
-
-<h3>Install CPAN Modules</h3>
-
-Install CPAN modules using cpanm.
-
-<pre>
-# Install CPAN modules.
 cpanm Mojolicious
 </pre>
 
-<h4>Version Specific</h4>
+<h4>バージョンを指定してインストール</h4>
 
-You can install modules with the version.
+バージョンを指定してインストールすることができます。
 
 <pre>
 cpanm Mojolicious@9.23
 </pre>
 
-<h4>Specifying the installation directory</h4>
+<h4>指定したディレクトリにインストール</h4>
 
-You can install CPAN modules on the specified directory using <b>-L</b> option.
+指定したディレクトリにCPANモジュールをインストールするには<b>-L</b>オプションを使用します。
 
 <pre>
 cpanm -L extlib DBIx::Custom
 </pre>
 
-<a href="https://dbix-custom.perlzemi.com/">DBIx::Custom</a> will be installed "extlib" in the current directory.
+カレントディレクトリの<b>extlib</b>というディレクトリに<a href="https://dbix-custom.perlzemi.com/">DBIx::Custom</a>がインストールされます。
 
-<h3>cpanfile - Definition of Modules</h3>
+<h3>cpanfile - インストールするモジュールの定義</h3>
 
-You can defined modules you want to install and the versions using <b>cpanfile</b>.
+<strong>cpanfile</strong>を使うと、インストールするモジュールを定義することができます。
 
-<h4>Writing cpanfile</h4>
+<h4>cpanfileの記述</h4>
 
-<b>cpanfile</b> is a file to define the modules and the versions.
-
-Create the file "cpanfile".
-
-<pre>
-# Create a "cpanfile" file
-touch cpanfile
-</pre>
-
-Define the moudles and the versions.
+cpanfileを記述します。cpanfileはモジュールとモジュールのバージョンを指定するためのファイルです。cpanfileという名前のファイルを作成してください。以下のような記述を行います。
 
 <pre>
 requires 'DBI', '== 1.619';
@@ -139,33 +117,33 @@ requires 'DBD::SQLite', '== 1.36_04';
 requires 'DBIx::Custom', '== 0.25';
 </pre>
 
-<b>cpanfile formats:</b>
+次のフォーマットで記述します。
 
 <pre>
-requires MODULE_NAME VERSION
+requires モジュール名 バージョン
 </pre>
 
-You can use the following syntax for the version:
+バージョンには次の表記を使うことができます。
 
 <table>
   <tr>
     <td>
-      <b> Descriptions </b>
+      <b>意味</b>
     </td>
     <td>
-      <b> Formats </b>
+      <b>書式</b>
     </td>
     <td>
-      <b> Examples </b>
+      <b>サンプル</b>
     </td>
   </tr>
 
   <tr>
     <td>
-      Specified version
+      指定したバージョン
     </td>
     <td>
-      == Version
+      == バージョン
     </td>
     <td>
       == 0.03
@@ -174,22 +152,22 @@ You can use the following syntax for the version:
 
   <tr>
     <td>
-      Specified version or higher
+      指定したバージョン以上
     </td>
     <td>
-      >= Version
+      バージョンのみ あるいは >= バージョン
     </td>
     <td>
-      >= 0.03
+      0.03 あるいは >= 0.03
     </td>
   </tr>
 
   <tr>
     <td>
-      Below the specified version
+      指定したバージョン以下
     </td>
     <td>
-      <= Version
+      <=
     </td>
     <td>
       <= 0.03
@@ -198,10 +176,10 @@ You can use the following syntax for the version:
 
   <tr>
     <td>
-      Greater than the specified version
+      指定したバージョンより大きい
     </td>
     <td>
-      > Version
+      > バージョン
     </td>
     <td>
       > 0.03
@@ -210,40 +188,30 @@ You can use the following syntax for the version:
 
   <tr>
     <td>
-      Less than the specified version
+      指定したバージョンより小さい
     </td>
     <td>
-      < Version
+      < バージョン
     </td>
     <td>
       < 0.03
     </td>
   </tr>
+
 </table>
 
-<h4>Install Modules using cpanfile</h4>
+<h4>モジュールのインストール</h4>
 
-You can install CPAN modules from the definition of cpanfile using the "<b>--installdeps</b>" option.
-
-<pre>
-# Install CPAN modules from the definition of cpanfile
-perl cpanm --installdeps .
-</pre>
-
-You can also install modules on the specified directory using the "<strong>-L</strong>" option.
+cpanmの<strong>--installdeps</strong>オプションを使うと、cpanfileの定義を使って、モジュールをインストールしてくれます。
 
 <pre>
-perl cpanm -L extlib - installdeps.
+# cpanfileの定義を使ってモジュールをインストール
+cpanm --installdeps .
 </pre>
 
-<h3>Showing Help</h3>
-
-Show the cpanm help.
+<strong>-L</strong>オプションを使えば、指定したディレクトリにモジュールをインストールすることもできます。
 
 <pre>
-cpanm -h
+cpanm -L extlib --installdeps .
 </pre>
 
-<div style="height:23000px">
-　
-</div>

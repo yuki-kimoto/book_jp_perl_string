@@ -21,76 +21,112 @@
     <img width="65" src="images/chapter_top.png">
   </div>
   <div class="chapter_description_right">
-    Let's intall Perl on Linux/UNIX.
+    Linux/UNIXへPerlをインストールしてみましょう。
   </div>
 </div>
 
-<h2>Installation of Perl on Linux/Unix</h2>
+<h2>Unix/LinuxへのPerlのインストール</h2>
 
-Perl is already installed in <a href="https://en.linux.perlzemi.com/">Linux</a>/<a href="https://en.wikipedia.org/wiki/Unix">UNIX</a> in many cases.
+Unix/Linux環境には、すでにPerlがインストールされてることが多いです。
 
-Check if Perl is installed on Linux/UNIX by the following command.
+Linuxディストリビューションとしては、<a href="https://ubuntu.perlzemi.com/">Ubuntu</a>や<a href="https://centos.perlzemi.com/">CentOS</a>があります。
+
+以下のコマンドでPerlがインストールされているか確認してみましょう。
 
 <pre>
 perl -v
 </pre>
 
-If you see the version of Perl, Perl is already installed.
+存在する場合はすぐにPerlを使い始めることができます。
+
+ない場合は、Unix/Linuxディストリビューションの標準のPerlをインストールすることができます。
+
+あるいは、ユーザー環境にPerlをインストールすることもできます。
+
+
+<h3>システムPerlのインストール</h3>
+
+rootユーザー権限で以下のコマンドを実行しましょう。ディストリビューションごとに、コマンドが異なるので、自分の環境にあったコマンドを実行してみてください。
+
+<h4>UbuntuでのPerlのインストール</h4>
+
+UbuntuでのPerlのインストール方法です。
 
 <pre>
-This is perl 5, version 32, subversion 1 (v5.32.1) built for x86_64-linux
-(with 1 registered patch, see perl -V for more detail)
-</pre>
-
-<h3>Installation of System Perl</h3>
-
-If the system doesn't have Perl , you can install the Perl using package managers such as <a href="https://en.ubuntu.perlzemi.com/blog/20200530085516.html">apt</a> or yum.
-
-<h4>Ubuntu</h4>
-
-How to <a href="https://en.ubuntu.perlzemi.com/blog/20200616085351.html">install Perl on Ubuntu</a>.
-
-<pre>
-# Installation of Perl on Ubuntu
+# UbuntuでのPerlのインストール
 sudo apt install perl
 </pre>
 
-<h4>Debian</h4>
+UbuntuでのPerlのインストールについては以下の記事も参考にしてください。
 
-How to install Perl on Debian.
+<ul>
+  <a href="https://ubuntu.perlzemi.com/blog/20200616085351.html">UbuntuでPerlをインストール</a>
+</ul>
 
-<pre>
-# Installation of Perl on Debian
-apt-get install perl
-</pre>
-
-<h4>CentOS/Redhat</h4>
-
-How to install Perl on <a href="https://en.centos.perlzemi.com/">CentOS</a>/Redhat.
+<h4>Redhat LinuxでのPerlのインストール</h4>
 
 <pre>
-# Installation of Perl on Cent OS
+# RedHatでのPerlのインストール
 yum install perl
 </pre>
 
-<h4>FreeBSD</h4>
-
-How to install Perl on FreeBSD.
+<h4>CentOSでのPerlのインストール</h4>
 
 <pre>
-# Installation of Perl on FreeBSD
+# Cent OSでのPerlのインストール
+yum install perl
+</pre>
+
+<h4>DebianでのPerlのインストール</h4>
+
+<pre>
+# DebianでのPerlのインストール
+apt-get install perl
+</pre>
+
+<h4>FreeBSDでのPerlのインストール</h4>
+
+<pre>
+# FreeBSDでのPerlのインストール
 pkg_add -r perl
 </pre>
 
-<h3>Installation of Perl on your home directory</h3>
+<h3>ユーザー環境へのPerlのインストール</h3>
 
-If you want to install the specific version of Perl on your home directory, you can use <b>perlbrew</b> or <b>plenv</b> according to your taste.
+自分のユーザー環境にPerlをインストールしたい場合はperlbrewあるいはplenvというツールを使うことができます。
+
+ルート権限が必要ないので、インストールは簡単で、OSの環境を汚しません。最新のPerlをインストールして使うことができます。
+
+本番環境のWebサービスでPerlを実行する場合は、この方法が2018年現在は主流となっています。
+
+perlbrewとplenvはどちらも、似ているツールで、ユーザー環境にPerlをインストールするためのツールです。お好みで選択してください。
 
 <ul>
   <li>
-    <a href="/blog/20110220130464.html">perlbrew - Install Perl on your home directory</a>
+    <a href="/blog/20110220130464.html">perlbrew - ユーザー環境にPerlをインストールする</a>
   </li>
   <li>
-    <a href="/blog/20180816153437.html">plenv - Install Perl on your home directory</a>
+    <a href="/blog/20180816153437.html">plenv - ユーザー環境にPerlをインストールする</a>
   </li>
 </ul>
+
+<h3>Linuxサーバー管理・Webシステム開発環境構築</h3>
+
+<h4>Ubuntu+PerlでWebシステム開発 環境構築</h4>
+
+UbuntuでPerlのWebシステム開発環境を構築したい場合は、以下のコンテンツを参考にしてください。
+
+<a href="https://ubuntu.perlzemi.com/">Ubuntu+PerlでWebシステム開発 環境構築</a>
+
+<h4>CentOS+PerlでWebシステム開発環境構築</h4>
+
+CentOSでPerlのWebシステム開発環境を構築したい方は、以下のコンテンツがあります。
+
+<a href="https://centos.perlzemi.com/">CentOSサーバー構築入門</a>
+
+<h4>Linuxサーバー管理入門</h4>
+
+Linuxサーバー管理として、Linuxの基本的なコマンドや考え方について、学びたいという場合は、Linuxサーバー管理入門を参考にしてください。
+
+<a href="https://linux.perlzemi.com/">Linuxサーバー管理入門</a>
+

@@ -53,6 +53,11 @@ sub run {
       }
       $data->{content} = join("\n", @lines);
     }
+    
+    # 画像を相対リンクへ偏向
+    {
+      $data->{content} =~ s|src\s*=\s*"/|src="./|g;
+    }
 
     # Parse title
     $api->parse_title_from_first_h_tag($data);

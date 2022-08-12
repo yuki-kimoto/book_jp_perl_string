@@ -21,23 +21,23 @@
     <img width="65" src="images/chapter_top.png">
   </div>
   <div class="chapter_description_right">
-   Let's install Perl on your home directory using perlbrew or plenv.
+   perlbrewまたはplenvを使ってユーザーのホームディレクトリにPerlをインストールしましょう。
   </div>
 </div>
 
-<h2>perlbrew - Installation of Perl on User Directries</h2>
+<h2>perlbrew - ユーザー環境にPerlをインストールする</h2>
 
-<a href="https://perlbrew.pl/">perlbrew</a> is a command line tool to intall Perl on user directries. You can install any version of Perl on your user directries and use it.
+ユーザー環境にPerlをインストールするにはperlbrewというツールを使用します。システム標準のPerlを利用したくない場合や新しいバージョンのPerlを利用したい場合は便利です。またperlbrewを使うと複数のバージョンのPerlの切り替えを行うことができます。
 
-<h3>Installation of perlbrew</h3>
+<h3>perlbrewのインストール</h3>
 
-Execute the following command to install perlbrew.
+以下のコマンドを実行します。
 
 <pre>
 curl -L http://install.perlbrew.pl | bash
 </pre>
 
-If you don't have curl command, use wget command or fetch command.
+もしcurlコマンドがなければ、以下のコマンドを実行してみてください。
 
 <pre>
 # Linux
@@ -47,206 +47,174 @@ wget -O - http://install.perlbrew.pl | bash
 fetch -o- http://install.perlbrew.pl | sh
 </pre>
 
-You can also install perlbrew from <a href="/blog/20100504127089.html">CPAN</a>.
+cpanから二つの手順でインストールすることもできます。
 
 <pre>
 sudo cpan App::perlbrew
 perlbrew init
 </pre>
 
-<h4>bash</h4>
-
-Add the perlbrew settings to "~/.bashrc".
+次にperlbrewのパスを通しましょう。perlbrewで用意されているbash用の設定ファイルを「~/.bashrc」に追加します(bashの場合)。
 
 <pre>
 echo "source ~/perl5/perlbrew/etc/bashrc" >> ~/.bashrc
 </pre>
 
-Reload "~/.bashrc".
+「.bashrc」を読み込みなおします。
 
 <pre>
-source ~/.bashrc
+source  ~/.bashrc
 </pre>
 
-<h4>csh</h4>
+<h3>ユーザー環境へのPerlのインストール</h3>
 
-Add the perlbrew settings to "~/.cshrc".
+ユーザー環境にPerlをインストールします。5.28.2のPerlをインストールしてみましょう。時間がかかるので待ちます(約30分程度)。
 
 <pre>
-echo "source ~/perl5/perlbrew/etc/cshrc" >> ~/.cshrc
+perlbrew install perl-5.28.2
 </pre>
 
-Reload "~/.cshrc".
-
-<pre>
-source ~/.cshrc
-</pre>
-
-<h3>Installtion of Perl using perlbrew</h3>
-
-You can check the available Perls using <b>available</b> command.
-
-<pre>
-# Show the available Perls
-perlbrew available
-</pre>
-
-Let's install a Perl using <b>install</b> command. The latest Perl version for 2022 is v5.34.1.
-
-<pre>
-# Install Perl
-perlbrew install perl-5.34.1
-</pre>
-
-If the installation of Perl fails, check the following commands are installled. These commands are needed to install Perl.
+インストールできない場合は、Perlのコンパイルに必要なツールが、まだインストールされていない可能性があります。以下のツールが必要になりますので、各環境に応じて、インストールしてください。
 
 <ul>
-  <li> make </li>
-  <li> <a href="https://en.linux.perlzemi.com/blog/20201216103956.html">gcc</a> </li>
-  <li> patch </li>
+  <li>make</li>
+  <li>gcc</li>
+  <li>patch</li>
 </ul>
 
-Show the list of installed Perls using <b>list</b> command.
+試験を強制的に飛ばして強制的にインストールしたい場合は「-n」オプションを使用します。
 
 <pre>
-# Show the list of installed Perls
+perlbrew install -n perl-5.28.2
+</pre>
+
+利用できるPerlの一覧を見てみましょう。perlbrewのlistコマンドを使用します。
+
+<pre>
 perlbrew list
 </pre>
 
-The installed Perls are displayed.
+以下のように利用できるPerlが表示されます。アスタリスクのあるものが現在利用しているPerlです。
 
 <pre>
-  perl-5.34.1
+  perl-5.28.2
+* /usr/bin/perl (5.8.8)
 </pre>
 
-And switch to the installed Perl.
+Perlを切り替えるにはperlbrewのswitchコマンドを使用します。
 
 <pre>
-perlbrew switch perl-5.34.1
+perlbrew switch perl-5.28.2
 </pre>
 
-And show the installed Perls again. 
-
-<pre>
-# Show the installed Perls
-perlbrew list
-</pre>
-
-"*" is added to the head of the current Perl.
-
-<pre>
-* perl-5.34.1
-</pre>
-
-And see the Perl version.
+Perlのバージョンを実際に確認してみましょう。
 
 <pre>
 perl -v
 </pre>
 
-The version of current Perl is displayed.
+以下のように5.28.2のバージョンになっています。
 
 <pre>
-This is perl 5, version 34, subversion 1 (v5.34.1) built for x86_64-linux
+This is perl 5, version 16, subversion 3 (v5.28.2) built for i686-linux
 </pre>
 
-<h3>Installation of cpanm</h3>
+<h3>cpanmのインストール</h3>
 
-<a href="/blog/20101027127859.html">cpanm</a> can be installed using <b>install-cpanm</b> command.
-
+モジュールをインストールするのに便利なcpanmもインストールしておきましょう。
 <pre>
 perlbrew install-cpanm
 </pre>
 
-And install a module.
+これで以下のコマンドでモジュールがインストールできるようになります。
 
 <pre>
 cpanm JSON
 </pre>
 
-Modules are installed on the following directory in my case.
+モジュールは以下のディレクトリなどにインストールされます。
 
 <pre>
-/home/kimoto/perl5/perlbrew/perls/perl-5.34.1/lib/site_perl/5.34.1/
+/home/kimoto/perl5/perlbrew/perls/perl-5.28.2/lib/site_perl/5.28.2/
 </pre>
 
-<h3>Returning back to System Perl</h3>
+<h3>元のPerlに戻す</h3>
 
-If you want to returning back to system Perl, use <b>off</b> command.
+元のPerlに戻すには以下のようにします。
 
 <pre>
 perlbrew off
 </pre>
 
-<!--
+<h3>perlbrewで指定したバージョンのPerlをcrontabで使う方法</h3>
 
-<h3>How to use the version of Perl specified by perlbrew with crontab</h3>
+perlbrewのはまりどころのひとつは、perlbrewで指定したバージョンのPerlがcronからは利用されないということでしょう。これはcronから実行するときは、シェルが起動されないので.bash_profileが読み込まれないことが原因です。perlbrewによる設定は、.bash_profileの中に記述したからですね。
 
-One of the main points of perlbrew is that the version of Perl specified by perlbrew is not used by cron. This is because .bash_profile is not loaded when running from cron because the shell is not started. The setting by perlbrew is described in .bash_profile.
+一番簡単な解決策は、crontabの中でPATHを、そのユーザーが持っている環境変数PATHの値に書き換えてあげることです。
 
-The simplest solution is to rewrite PATH in crontab to the value of the environment variable PATH that the user has.
-
-First, as the user who installed perlbrew, display the value of the PATH environment variable.
+まずperlbrewをインストールしたユーザーで、PATH環境変数の値を表示します。
 
 <pre>
 env | grep PATH
 </pre>
 
-You will see some environment variable that include PATH, so look for something called PATH. (This is an example when the user name is admins.)
+PATHを含んだ環境変数がいくつか表示されるので、PATHというものを探します。(ユーザー名がadminsの場合の例です。)
 
 <pre>
-PATH =/home/admins/perl5/perlbrew/bin:/home/admins/perl5/perlbrew/perls/perl-5.16.2/bin:/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/home/admins/bin
+PATH=/home/admins/perl5/perlbrew/bin:/home/admins/perl5/perlbrew/perls/perl-5.16.2/bin:/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/home/admins/bin
 </pre>
 
-Edit crontab with the following command.
+以下のコマンドでcrontabを編集します。
 <pre>
 crontab -e
 </pre>
 
-Then write the above PATH value to the top of crontab.
+そして上記のPATHの値をcrontabの一番上に書き込みます。
 
 <pre>
-PATH =/home/admins/perl5/perlbrew/bin:/home/admins/perl5/perlbrew/perls/perl-5.16.2/bin:/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/home/admins/bin
+PATH=/home/admins/perl5/perlbrew/bin:/home/admins/perl5/perlbrew/perls/perl-5.16.2/bin:/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/home/admins/bin
 
-# cron settings continue ...
+# cronの設定が続く...
 </pre>
 
-Now cron will use the specified version of Perl.
+これでcronが指定したバージョンのPerlを利用してくれるようになります。
 
-<h4>First line description of Perl script</h4>
+<h4>Perlスクリプトの一行目の記述</h4>
 
-Write the first line of the Perl script using the env command as shown below.
+Perlスクリプトの一行目の記述は以下のようenvコマンドを使った記述をしましょう。
 
 <pre>
-# !/usr/bin/env perl
+#!/usr/bin/env perl
 </pre>
 
-This will automatically detect perl from the set PATH value.
+こうすると設定したPATHの値から自動的にperlを検出してくれます。
 
-As you can see, this method solidifies the PATH, so crontab is not portable at all. Since the user name admins is directly embedded and the version number of perl is written as it is, it will not work when changing the version with perlbrew.
+この方法は、見てのとおり、PATHをベタ書きしますので、crontabの移植性がまったくないです。ユーザー名のadminsが直接埋め込まれていますし、perlのバージョン番号がそのまま記述されているので、perlbrewでバージョンを変更したときは、動かなくなります。
 
-But I think this method is the best. The reason is that it is difficult to make it portable because there is a limitation that environment variable cannot be expanded in crontab. Portability increases the amount of description, requires additional scripts, and complicates management.
+でもこの方法が一番よいと思います。その理由はcrontab内では、環境変数の変数展開ができないという制限があるので、うまく移植性を持たせることが難しいということが理由です。移植性を持たせると、記述量が多くなったり、追加のスクリプトが必要になったり、管理が煩雑になってしまいます。
 
-Also, no matter how hard you try, crontab usually has some differences depending on the environment, so even if you keep portability, there may not be much merit.
+それとどんなにがんばっても、crontabって環境ごとに、何らかの差分があることがほとんどなので、移植性を保たせてもあんまりメリットがないということもあります。
 
--->
+<h2>plenv - ユーザー環境にPerlをインストールする</h2>
 
-<h2>plenv - Installation of Perl on User Directories</h2>
 
-<a href="https://github.com/tokuhirom/plenv">plenv</a> is a command line tool to intall Perl on user directries. You can install any version of Perl on your user directries and use it.
 
-<h3>Installation of plenv</h3>
+plenvというツールを利用すると、ユーザー環境にPerlをインストールすることができます。システム標準のPerlを利用したくない場合や新しいバージョンのPerlを利用したい場合は便利です。またplenvを使うと複数のバージョンのPerlの切り替えを行うことができます。
 
-Execute the following command to install plenv.
+<h3>plenvのインストール</h3>
+
+plenvをインストールしてみましょう。前提として、plenvをインストールするにはgitがインストールされている必要があるので注意してください。
+
+以下のコマンドを実行します。
 
 <pre>
-git clone https://github.com/tokuhirom/plenv.git ~/.plenv
-git clone https://github.com/tokuhirom/Perl-Build.git ~/.plenv/plugins/perl-build/
+git clone git://github.com/tokuhirom/plenv.git ~/.plenv
+git clone git://github.com/tokuhirom/Perl-Build.git ~/.plenv/plugins/perl-build/
 </pre>
 
-Next, let's pass the path of plenv. Add the configuration file for bash provided by plenv to ".bash_profile" (for bash).
+次にplenvのパスを通しましょう。plenvで用意されているbash用の設定ファイルを「.bash_profile」に追加します(bashの場合)。
 
-Execute the following command.
+以下のコマンドを実行してください。
 
 <pre>
 echo 'export PATH="$HOME/.plenv/bin:$PATH"' >> ~/.bash_profile
@@ -254,167 +222,152 @@ echo 'eval "$(plenv init -)"' >> ~/.bash_profile
 exec $SHELL -l
 </pre>
 
-<h3>Installtion of Perl using plenv</h3>
+<h3>ユーザー環境へのPerlのインストール</h3>
 
-You can check the available Perls using <b>install</b> command and <b>-l</b> option.
+利用できるPerlの一覧を見てみましょう。
 
 <pre>
 plenv install -l
 </pre>
 
-If plenv is installed successfully, you will see a list of Perls you can install.
+うまくplenvがインストールされていると、インストール可能なPerlの一覧が表示されます。
 
 <pre>
-Available versions: Available versions:
- 5.35.10
- 5.35.9
- 5.35.8
- 5.35.7
- 5.35.6
- 5.35.5
- 5.35.4
- 5.35.3
- 5.35.2
- 5.35.1
- 5.35.0
- 5.34.1
-  ...
+Available versions:
+ 5.29.1
+ 5.29.0
+ 5.28.0
+ 5.28.0-RC4
+ 5.28.0-RC3
+ 5.28.0-RC2
+ 5.28.0-RC1
+ ...
 </pre>
 
-Install Perl in your environment. Let's install Perl of 5.34.1. It will take some time, so wait(about 40 minutes).
-
-<pre>
-plenv install 5.34.1
-</pre>
-
-If the installation of Perl fails, check the following commands are installled. These commands are needed to install Perl.
+ここで、599 Internal Exceptionなどエラーがでた場合は、以下の記事を元に、フィックスをこころみましょう。
 
 <ul>
-  <li> make </li>
-  <li> <a href="https://en.linux.perlzemi.com/blog/20201216103956.html">gcc</a> </li>
-  <li> patch </li>
+  <li>
+    <a href="https://qiita.com/DQNEO/items/890b99134be0ad81d174">[対処法</a> 599 Internal Exception, https://fastapi.metacpan.org/v1/release/_search]
+  </li>
+  <li>
+    <a href="https://github.com/miyagawa/HTTP-Tinyish/issues/14">want to check Mozilla :: CA</a>
+  </li>
 </ul>
 
-Show the list of installed Perls using <b>versions</b> command.
+どうしてもうまくいかない場合は<a href="/blog/20110220130464.html">perlbrew</a>で。
+
+ユーザー環境にPerlをインストールします。5.20.3のPerlをインストールしてみましょう。時間がかかるので待ちます(約40分程度)。
 
 <pre>
-# Show the list of installed Perls
+plenv install 5.20.3
+</pre>
+
+利用可能なPerlの一覧を表示してみましょう。
+
+<pre>
 plenv versions
 </pre>
 
-When Perl is available
+Perlが利用できると
 
-The installed Perls are displayed.
-
-<pre>
-* system(set by /home/kimoto/.plenv/version)
-  5.34.1
-</pre>
-
-And switch to the installed Perl using the <b>global</b> command.
+以下のように利用できるPerlが表示されます。アスタリスクのあるものが現在利用しているPerlです。
 
 <pre>
-plenv global 5.34.1
+* system (set by /home/kimoto2/.plenv/version)
+  5.20.3
 </pre>
 
-And show the installed Perls again. 
+Perlを切り替えるにはplenvのglobalコマンドを使用します。
 
 <pre>
-# Show the list of installed Perls
-plenv versions
+plenv global 5.20.3
 </pre>
 
-"*" is added to the head of the current Perl.
+plenvの利点として<a href="https://papix.hatenablog.com/entry/2018/03/10/160838">localコマンド</a>を使うと、ディレクトリ毎にPerlを切り替えることもできるようです。
 
-<pre>
-  system(set by /home/kimoto/.plenv/version)
-* 5.34.1
-</pre>
-
-And see the Perl version.
+Perlのバージョンを実際に確認してみましょう。
 
 <pre>
 perl -v
 </pre>
 
-The version of current Perl is displayed.
+以下のように5.20.3のバージョンになっています。
 
 <pre>
-This is perl 5, version 34, subversion 1 (v5.34.1)  built for x86_64-linux
+This is perl 5, version 20, subversion 3 (v5.20.3) built for x86_64-linux
+(with 1 registered patch, see perl -V for more detail)
 </pre>
 
-<h3>Installation of cpanm</h3>
+<h3>cpanmのインストール</h3>
 
-<a href="/blog/20101027127859.html">cpanm</a> can be installed using <b>install-cpanm</b> command.
+モジュールをインストールするのに便利なcpanmもインストールしておきましょう。
 
 <pre>
 plenv install-cpanm
 </pre>
 
-And install a module.
+これで以下のコマンドでモジュールがインストールできるようになります。
 
 <pre>
 cpanm JSON
 </pre>
 
-<h3>Returning back to System Perl</h3>
+<h3>元のPerlに戻す</h3>
 
-If you want to returning back to system Perl, switch to <b>system</b>.
+元のPerlに戻すには以下のようにします。
 
 <pre>
 plenv global system
 </pre>
 
-<!--
+<h3>plenvでインストールしたPerlをcrontabで使う方法</h3>
 
-<h3>How to use Perl installed with plenv with crontab</h3>
+plenvのはまりどころのひとつは、plenvでインストールしたPerlがcronからは利用されないということでしょう。これはcronから実行するときは、シェルが起動されないので.bash_profileが読み込まれないことが原因です。plenvによる設定は、.bash_profileの中に記述したからですね。
 
-One of the main points of plenv is that Perl installed with plenv is not used by cron. This is because .bash_profile is not loaded when running from cron because the shell is not started. The setting by plenv is described in .bash_profile.
+一番簡単な解決策は、crontabの中でPATHを、そのユーザーが持っている環境変数PATHの値に書き換えてあげることです。
 
-The simplest solution is to rewrite PATH in crontab to the value of the environment variable PATH that the user has.
-
-First, as the user who installed plenv, display the value of the PATH environment variable.
+まずplenvをインストールしたユーザーで、PATH環境変数の値を表示します。
 
 <pre>
 env | grep PATH
 </pre>
 
-You will see some environment variable that include PATH, so look for something called PATH. (This is an example when the user name is admins.)
+PATHを含んだ環境変数がいくつか表示されるので、PATHというものを探します。(ユーザー名がadminsの場合の例です。)
 
 <pre>
-PATH =/home/kimoto2/.plenv/shims: /home/kimoto2/.plenv/bin:/home/kimoto2/.plenv/shims:/home/kimoto2/.plenv/bin:/usr/local/bin:/ bin:/usr/bin:/usr/local/sbin: /usr/sbin:/home/kimoto2/.local/bin:/home/kimoto2/bin:/home/kimoto2/.local/bin:/home/kimoto2 /bin:/home/kimoto2/.local/bin:/home/kimoto2/bin
+PATH=/home/kimoto2/.plenv/shims:/home/kimoto2/.plenv/bin:/home/kimoto2/.plenv/shims:/home/kimoto2/.plenv/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/kimoto2/.local/bin:/home/kimoto2/bin:/home/kimoto2/.local/bin:/home/kimoto2/bin:/home/kimoto2/.local/bin:/home/kimoto2/bin
 </pre>
 
-Edit crontab with the following command.
+以下のコマンドでcrontabを編集します。
 
 <pre>
 crontab -e
 </pre>
 
-Then write the above PATH value to the top of crontab.
+そして上記のPATHの値をcrontabの一番上に書き込みます。
 
 <pre>
-PATH =/home/kimoto2/.plenv/shims: /home/kimoto2/.plenv/bin:/home/kimoto2/.plenv/shims:/home/kimoto2/.plenv/bin:/usr/local/bin:/ bin:/usr/bin:/usr/local/sbin: /usr/sbin:/home/kimoto2/.local/bin:/home/kimoto2/bin:/home/kimoto2/.local/bin:/home/kimoto2 /bin:/home/kimoto2/.local/bin:/home/kimoto2/bin
+PATH=/home/kimoto2/.plenv/shims:/home/kimoto2/.plenv/bin:/home/kimoto2/.plenv/shims:/home/kimoto2/.plenv/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/kimoto2/.local/bin:/home/kimoto2/bin:/home/kimoto2/.local/bin:/home/kimoto2/bin:/home/kimoto2/.local/bin:/home/kimoto2/bin
 
-# cron settings continue ...
+# cronの設定が続く...
 </pre>
 
-Now cron will use the specified version of Perl.
+これでcronが指定したバージョンのPerlを利用してくれるようになります。
 
-<h4>First line description of Perl script</h4>
+<h4>Perlスクリプトの一行目の記述</h4>
 
-Write the first line of the Perl script using the env command as shown below.
+Perlスクリプトの一行目の記述は以下のようenvコマンドを使った記述をしましょう。
 
 <pre>
-# !/usr/bin/env perl
+#!/usr/bin/env perl
 </pre>
 
-This will automatically detect perl from the set PATH value.
+こうすると設定したPATHの値から自動的にperlを検出してくれます。
 
-As you can see, this method is completely non-portable to crontab. The user name kimoto2 is directly embedded.
+この方法は、見てのとおり、crontabの移植性がまったくないです。ユーザー名のkimoto2が直接埋め込まれています。
 
-But I think this method is the best. The reason is that it is difficult to make it portable because there is a limitation that environment variable cannot be expanded in crontab. Portability increases the amount of description, requires additional scripts, and complicates management.
+でもこの方法が一番よいと思います。その理由はcrontab内では、環境変数の変数展開ができないという制限があるので、うまく移植性を持たせることが難しいということが理由です。移植性を持たせると、記述量が多くなったり、追加のスクリプトが必要になったり、管理が煩雑になってしまいます。
 
-Also, no matter how hard you try, crontab usually has some differences depending on the environment, so even if you keep portability, there may not be much merit.
+それとどんなにがんばっても、crontabって環境ごとに、何らかの差分があることがほとんどなので、移植性を保たせてもあんまりメリットがないということもあります。
 
--->
